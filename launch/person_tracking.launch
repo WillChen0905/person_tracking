@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	<!-- Realsense D435 -->
+	<include file="$(find realsense2_camera)/launch/rs_rgbd.launch" />
+	
+	<!-- darknet_ros -->
+	<include file="$(find darknet_ros)/launch/darknet_ros.launch" />
+
+	<!-- object_position -->
+	<include file="$(find darknet_ros)/launch/object_position.launch" />
+	
+        <!-- person_tracking -->
+        <node pkg="person_tracking" type="person_tracking" name="person_tracking" output="screen" />
+
+	<!--AIV_TF>
+	<include file="$(find utl_nav_2nd)/launch/utl_tf.launch" /-->
+
+        <!-- Rviz >
+        <arg name="use_rviz" default="true" />
+        <node pkg="rviz" type="rviz" name="rviz" args="-d $(find person_tracking)/rviz_cfg/person_tracking.rviz" if="$(arg use_rviz)" /-->
+
+</launch>
